@@ -1,0 +1,62 @@
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 90%;
+    margin: auto;
+  }
+
+  label {
+    flex-basis: 30%;
+    text-align: left;
+  }
+  
+  input,
+  select {
+    flex-basis: 60%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  #button-cancelar {
+    background-color: #e21616;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  #button-guardar {
+    background-color: #330ddb;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .page-container {
+    outline: 2px solid black;
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .page-container h1 {
+    position: relative;
+    margin: -20px -20px 20px -20px;
+    padding: 10px;
+    background-color: white;
+    font-size: 24px;
+    text-align: left;
+    font-weight: bold;
+  }

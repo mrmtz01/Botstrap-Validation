@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formulario</title>
+    <link rel="stylesheet" type="text/css" href="estilosproducto.css">
+    <!-- Linkamos la hoja de estilos de bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="page-container">
+      <h1>Registro de Productos</h1>
+        <form id="formulario" class="needs-validation" novalidate onsubmit="return validarFormulario()">
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" name="codigo" required>
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" required>
+        <label for="codigo_barra">Código de Barra:</label>
+        <input type="text" id="codigo_barra" name="codigo_barra" required>
+        <label for="precio_unitario">Precio Unitario:</label>
+        <input type="number" id="precio_unitario" name="precio_unitario" min="0" step="0.01" required>
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" min="0" required>
+        <label for="proveedor">Proveedor:</label>
+        <input type="text" id="proveedor" name="proveedor" required>
+        <label for="estado">Estado:</label>
+        <input type="checkbox" id="estado" name="estado">
+        <label for="categoria">Categoría:</label>
+        <select id="categoria" name="categoria">
+          <option value="categoria1">Categoría 1</option>
+          <option value="categoria2">Categoría 2</option>
+          <option value="categoria3">Categoría 3</option>
+        </select>
+        <div class="button-container">
+          <!-- Creamos botones Guardar y Cancelar-->
+          <button id="button-guardar" type="submit" class="btn btn-primary">Guardar</button>
+          <button id="button-cancelar" type="button" class="btn btn-secundary" onclick="limpiarFormulario()">Cancelar</button>
+        </div>
+      </form>
+
+    <!-- Librerías de JavaScript de jQuery y Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+  // Evento para cuando hagamos submit
+  $('form').submit(function(event) {
+    // Evitamos comportamiento default
+    event.preventDefault();
+
+    // validamos que los campos estén llenos
+    var camposLlenos = true;
+    $('input, select').each(function() {
+      if ($(this).val() === '') {
+        camposLlenos = false;
+        return false;
+      }
+    });
+
+    if (camposLlenos) {
+      // Con esto agregamos la alerta de bootstrap de guardado
+      var alerta = '<div class="alert alert-success" role="alert">Datos guardados con éxito</div>';
+      // Con esto le pedimos que ponga la alerta al final de la página
+      $('body').append(alerta);
+      // Con esto le pedimos que la alerta se vea durante 2 segundos
+      setTimeout(function() {
+        $('.alert').fadeOut('fast');
+      }, 2000);
+    } else {
+      // Con esto agregamos la alerta de bootstrap avisando que debemos rellenar el formulario
+      var alerta = '<div class="alert alert-danger" role="alert">Por favor, llene todos los campos</div>';
+      // Con esto le pedimos que ponga la alerta al final de la página
+      $('body').append(alerta);
+      // Con esto le pedimos que la alerta se vea durante 2 segundos
+      setTimeout(function() {
+        $('.alert').fadeOut('fast');
+      }, 2000);
+    }
+  });
+});
+    // Evento para cuando hagamos click en cancelar
+    function limpiarFormulario() {
+    document.getElementById("formulario").reset();
+    }
+    </script>
+    </div>
+  </body>
+</html>
